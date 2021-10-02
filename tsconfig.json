@@ -1,0 +1,32 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"rootDir": "./",
+		"outDir": "dist",
+		"strict": true,
+		"moduleResolution": "node",
+		"baseUrl": "./",
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"paths": {
+			"*": ["node_modules/*"],
+			"@assets": ["src/assets/*"],
+			"@controllers": ["src/controllers/*"],
+			"@meta": ["src/middleware/meta/*"],
+			"@shared": ["src/middleware/shared/*"],
+			"@services": ["src/services/*"],
+			"@utils": ["src/utils/*"],
+		}
+	},
+	"exclude": ["node_modules", "src/**/*.spec.ts"],
+	"watchOptions": {
+		"watchFile": "useFsEvents",
+		"watchDirectory": "useFsEvents",
+		"fallbackPolling": "dynamicPriority",
+		"synchronousWatchDirectory": true,
+		"excludeDirectories": ["node_modules"],
+	}
+}
