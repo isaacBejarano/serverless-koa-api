@@ -1,8 +1,6 @@
-const https = require("https");
-
 const { log } = require("../utils/chalk-log");
 
-const fetchDB = endpoint => {
+const fetchDB = (endpoint: string) => {
 	log("fetching DB...", null, "#ff00ff");
 
 	// TODO: consume DB API

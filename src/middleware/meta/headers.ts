@@ -1,4 +1,6 @@
-const headers = async (ctx, next) => {
+import { Context, Next } from "koa";
+
+const headers = async (ctx: Context, next: Next) => {
 	const req = Date.now();
 	await next();
 	const res = Date.now() - req;
