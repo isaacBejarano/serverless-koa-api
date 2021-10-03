@@ -1,6 +1,6 @@
 import { Context } from "koa";
 
-const { fetchDB } = require("@services/rest");
+const { fetchDB } = require("../services/rest");
 // TODO: fetchDB implements RESTService + ASYNC
 
 const getIdiom = (ctx: Context, collection: string) => {

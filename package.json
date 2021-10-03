@@ -1,25 +1,28 @@
 {
-  "name": "refranero-api",
-  "version": "2.0.0",
-  "description": "RESTful API for serving Spanish idioms",
-  "main": "dist/api.js",
-  "scripts": {
-    "watch": "tsc --watch",
-    "build": "tsc",
-    "serve": "nodemon dist/api --harmony"
-  },
-  "author": "Isaac Bejarano",
-  "license": "MIT",
-  "dependencies": {
-    "@koa/router": "^10.1.1",
-    "koa": "^2.13.3",
-    "koa-static": "^5.0.0",
-    "netlify-lambda": "^2.0.14",
-    "serverless-http": "^2.7.0",
-    "webpack": "^5.56.0"
-  },
-  "devDependencies": {
-    "@types/koa": "^2.13.4",
-    "chalk": "^4.1.2"
-  }
+	"name": "refranero-api",
+	"version": "2.0.0",
+	"description": "RESTful API for serving Spanish idioms",
+	"author": "Isaac Bejarano",
+	"license": "MIT",
+	"main": "dist/api.js",
+	"scripts": {
+		"dev": "ts-node src/api.ts",
+		"watch": "ts-node-dev --respawn src/api.ts",
+		"build": "tsc",
+		"serve": "node dist/api --harmony"
+	},
+	"dependencies": {
+		"@koa/router": "^10.1.1",
+		"koa": "^2.13.3",
+		"koa-static": "^5.0.0",
+		"module-alias": "^2.2.2",
+		"netlify-lambda": "^2.0.14",
+		"serverless-http": "^2.7.0",
+		"webpack": "^5.56.0"
+	},
+	"devDependencies": {
+		"@types/koa": "^2.13.4",
+		"chalk": "^4.1.2",
+		"ts-node-dev": "^1.1.8"
+	}
 }

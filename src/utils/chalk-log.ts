@@ -1,6 +1,6 @@
 const chalk = require("chalk");
 
-const log = (msg: string, _var: any, hex: string) => {
+const log = (msg: string, _var?: any, hex?: string) => {
 	// frequency of use: DESC
 	if (!_var && !hex) console.log(msg);
 	else if (_var && !hex) console.log(msg, _var);
