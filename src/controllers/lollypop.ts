@@ -1,9 +1,11 @@
 import { Context } from "koa";
 
-const { fetchDB } = require("../services/rest");
+import { i_Idiom } from "../models/idiom";
+import { fetchDB } from "../services/rest";
+
 // TODO: fetchDB implements RESTService + ASYNC
 
-const getLolly = (ctx: Context) => (ctx.body = fetchDB("lolly"));
-const getPop = (ctx: Context) => (ctx.body = fetchDB("pop"));
+const getLolly = (ctx: Context) => (ctx.body = <i_Idiom[]>fetchDB("lolly"));
+const getPop = (ctx: Context) => (ctx.body = <i_Idiom[]>fetchDB("pop"));
 
-module.exports = { getLolly, getPop };
+export { getLolly, getPop };

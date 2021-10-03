@@ -11,4 +11,4 @@ const headers = async (ctx: Context, next: Next) => {
 	// ctx.set("Origin", 'https://refranesespanol.es');
 };
 
-module.exports = { headers };
+export { headers };

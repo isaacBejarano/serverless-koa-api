@@ -1,6 +1,6 @@
-import chalk from "chalk"; // -D
+import chalk from "chalk";
 
-const log = (msg: string, _var?: any, hex?: string) => {
+const log = (msg: string | object, _var?: any, hex?: string) => {
 	// frequency of use: DESC
 	if (!_var && !hex) console.log(msg);
 	else if (_var && !hex) console.log(msg, _var);
@@ -8,6 +8,6 @@ const log = (msg: string, _var?: any, hex?: string) => {
 	else console.log(chalk.hex(hex)(msg), _var);
 };
 
-module.exports = { log };
+export { log };
 
 // OBS. console.log(chalk.hex("#f08080")("%s"), lastCtx);

@@ -1,9 +1,9 @@
 import { Context } from "koa";
 
-const { fetchDB } = require("../services/rest");
-// TODO: fetchDB implements RESTService + ASYNC
+import { i_Idiom } from "../models/idiom";
 
-const getIdiom = (ctx: Context, collection: string) => {
+// TODO: fetchDB implements RESTService + ASYNC
+const getIdiom = (ctx: Context, collection: string): void => {
 	const month = [
 		{
 			collection: collection,
@@ -11,7 +11,7 @@ const getIdiom = (ctx: Context, collection: string) => {
 		},
 	];
 
-	ctx.body = fetchDB(month);
+	ctx.body = <i_Idiom[]>month; // ~fetchDB(collection)
 };
 
-module.exports = { getIdiom };
+export { getIdiom };

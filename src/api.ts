@@ -1,22 +1,26 @@
 // require("module-alias/register");
 
-const Koa = require("koa");
-const KoaRouter = require("@koa/router");
-const serve = require("koa-static");
-import { Context } from "koa"; // @types/koa -D
+// TODO: alias path
+// TODO: create models
+// TODO: SOLID refactor
 
-const { log } = require("./utils/chalk-log");
-const { getIdiom } = require("./controllers/idioms");
-const { getLolly, getPop } = require("./controllers/lollypop");
-const { headers } = require("./middleware/meta/headers");
-const { reqLogger, resLogger } = require("./middleware/shared/loggers");
+import Koa from "koa";
+import KoaRouter from "@koa/router";
+import serve from "koa-static";
+import { Context } from "koa";
+
+import { log } from "./utils/chalk-log";
+import { getIdiom } from "./controllers/idioms";
+import { getLolly, getPop } from "./controllers/lollypop";
+import { headers } from "./middleware/meta/headers";
+import { reqLogger, resLogger } from "./middleware/shared/loggers";
 
 //* 1. 	API
 const api = new Koa();
 const router = new KoaRouter();
 const routes = router.routes();
 const allowedMethods = router.allowedMethods();
-const port = process.env.PORT || 3000;
+const port: string | number = process.env.PORT || 3000;
 
 //* 2.
 // 2.1. statics
@@ -41,8 +45,8 @@ api.use(allowedMethods);
 
 // 4.2. "/*" - cascade!
 api.use((ctx: Context) => {
-	ctx.status = 404;
-	ctx.body = ctx.message;
+	ctx.status = <number>404;
+	ctx.body = <string>ctx.message;
 });
 
 //* 5. 	ERROR HANDLER
@@ -56,7 +60,3 @@ NOTE
 * Lambda Cold Start => Don't pipe!
 * Def MIME: JSON + Fn: sync || async
 */
-
-// TODO: install + config Type
-// TODO: create models
-// TODO: strcuture project SOLID-wise
