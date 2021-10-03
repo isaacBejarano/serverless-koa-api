@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"main": "dist/api.js",
 	"scripts": {
-		"dev": "ts-node src/api.ts",
+		"start": "ts-node src/api.ts",
 		"watch": "ts-node-dev --respawn src/api.ts",
 		"build": "tsc",
 		"serve": "node dist/api --harmony"

@@ -1,11 +1,11 @@
-import { Context } from "koa";
 // require("module-alias/register");
 
 const Koa = require("koa");
 const KoaRouter = require("@koa/router");
 const serve = require("koa-static");
+import { Context } from "koa"; // @types/koa -D
 
-// const { log } = require("./utils/chalk-log"); // global import
+const { log } = require("./utils/chalk-log");
 const { getIdiom } = require("./controllers/idioms");
 const { getLolly, getPop } = require("./controllers/lollypop");
 const { headers } = require("./middleware/meta/headers");
@@ -46,12 +46,10 @@ api.use((ctx: Context) => {
 });
 
 //* 5. 	ERROR HANDLER
-// api.on("error", (err: Error) => log("server error", err, "#ff4500"));
-api.on("error", (err: Error) => console.log("server error"));
+api.on("error", (err: Error) => log("server error", err, "#ff4500"));
 
 //* 6. 	RUN
-// api.listen(port, () => log("Koa listening on port", port, "#eee8aa"));
-api.listen(port, () => console.log("Koa listening on port"));
+api.listen(port, () => log("Koa listening on port", port, "#eee8aa"));
 
 /*
 NOTE
