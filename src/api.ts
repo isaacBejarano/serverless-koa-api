@@ -10,8 +10,7 @@ import serve from "koa-static";
 import { Context } from "koa";
 
 import { log } from "./utils/chalk-log";
-import { getIdiom } from "./controllers/idioms";
-import { getLolly, getPop } from "./controllers/lollypop";
+import { getCollection } from "./controllers/crud";
 import { headers } from "./middleware/meta/headers";
 import { reqLogger, resLogger } from "./middleware/shared/loggers";
 
@@ -35,9 +34,8 @@ api.use(headers);
 
 //* 4. 	BODY
 // 4.1. "/r" + controllers
-router.get("/lolly", (ctx: Context) => getLolly(ctx));
-router.get("/pop", (ctx: Context) => getPop(ctx));
-router.get("/months/:id", (ctx: Context) => getIdiom(ctx, "months"));
+router.get("/lolly", (ctx: Context) => getCollection(ctx, "lolly"));
+router.get("/pop", (ctx: Context) => getCollection(ctx, "pop"));
 
 // 4.2. routing
 api.use(routes);
@@ -53,10 +51,6 @@ api.use((ctx: Context) => {
 api.on("error", (err: Error) => log("server error", err, "#ff4500"));
 
 //* 6. 	RUN
-api.listen(port, () => log("Koa listening on port", port, "#eee8aa"));
+api.listen(port, () => log("Koa listening on...", `http://localhost:${port}`, "#eee8aa"));
 
-/*
-NOTE
-* Lambda Cold Start => Don't pipe!
-* Def MIME: JSON + Fn: sync || async
-*/
+// NOTE: Lambda Cold Start => Don't pipe!
