@@ -17,7 +17,7 @@
 		}
 	},
 	"include": ["src/**/*", "src/static/json/*.json"],
-	"exclude": ["node_modules", "src/**/*.spec.ts", "src/static/static.ts"],
+	"exclude": ["node_modules", "src/**/*.spec.ts"],
 	"watchOptions": {
 		"watchFile": "useFsEvents",
 		"watchDirectory": "useFsEvents",

@@ -1,20 +1,20 @@
 import fs from "fs";
 import https from "https";
 
-import { ENV } from "../config/env";
+import { API_DB1, API_DB1_COL1, API_DB1_COL2, API_DB1_COL3 } from "../config/config";
 
-const API = ENV.API;
-const collections = ["slangs", "populars", "months"]; // ...
+const collectionsDB1 = [API_DB1_COL1, API_DB1_COL2, API_DB1_COL3]; // API_DB1_COL4...
+// const collectionsDB2 = [API_DB2_COL1, API_DB2_COL2, API_DB2_COL3]; // API_DB2_COL4...
+
 let db: object = {};
 
 // call + persist
-for (const collection of collections) {
+for (const collection of collectionsDB1) {
 	fetchRestfulDB(collection);
 }
-
 // LIB
 function fetchRestfulDB(collection: string) {
-	const endpoint = API + "/" + collection;
+	let endpoint = API_DB1 + "/" + collection;
 	let stream = "";
 
 	https

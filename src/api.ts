@@ -13,11 +13,12 @@ import { log } from "./utils/chalk-log";
 import { getCollection } from "./controllers/crud";
 import { headers } from "./middleware/meta/headers";
 import { reqLogger, resLogger } from "./middleware/shared/loggers";
+import { PORT, API_LAMBDA } from "./config/config";
 
 //* 1. 	API
 const api = new Koa();
 const router = new KoaRouter();
-const port: string | number = process.env.PORT || 3000;
+const port: string | number = PORT || 3000; // 3000 is dev. For prod, Netlify auto assigns port !== 3000
 
 //* 2.
 // 2.1. statics
@@ -31,12 +32,10 @@ api.use(reqLogger);
 api.use(headers);
 
 //* 4. 	BODY
-// 4.1. "/slug" + controllers
-const ntlAPI = "/.netlify/functions/api";
-router.get(ntlAPI + "/slangs", (ctx: Context) => getCollection(ctx, "slangs"));
-router.get(ntlAPI + "/populars", (ctx: Context) => getCollection(ctx, "populars"));
-router.get(ntlAPI + "/months", (ctx: Context) => getCollection(ctx, "months"));
-router.get(ntlAPI, (ctx: Context) => (ctx.body = { errorMsg: "Resource not found" }));
+// 4.1. API + "/slug" => controllers
+router.get(API_LAMBDA + "/slangs", (ctx: Context) => getCollection(ctx, "slangs"));
+router.get(API_LAMBDA + "/populars", (ctx: Context) => getCollection(ctx, "populars"));
+router.get(API_LAMBDA + "/months", (ctx: Context) => getCollection(ctx, "months"));
 // ...
 
 // 4.2. routing
@@ -57,6 +56,5 @@ api.listen(port, () => log("Koa listening on...", `http://localhost:${port}`, "#
 
 // NOTE: Lambda Cold Start => Don't pipe!
 /* LAMDBA - Netlify */
-// api.use("/.netlify/functions/api", router);
 
 module.exports.handler = serverless(api);
