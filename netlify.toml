@@ -1,0 +1,4 @@
+[build]
+	publish = "public"
+	functions = "lambda"
+	command = "npm install && npm run jam && npm run ntl:build"

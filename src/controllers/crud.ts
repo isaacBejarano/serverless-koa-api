@@ -1,17 +1,14 @@
 import { Context } from "koa";
-import { log } from "../utils/chalk-log";
 
-import { i_Idiom } from "../models/idiom";
-import { fetchDB } from "../services/rest";
-import { persistDB } from "./persistance";
+import data from "../static/json/static.json";
 
-const getCollection = async (ctx: Context, collection: string) => {
-	try {
-		const data: i_Idiom[] = await (<Promise<i_Idiom[]>>fetchDB(collection));
-		ctx.body = <i_Idiom[]>persistDB(data);
-	} catch (err) {
-		log(err, null, "#ff4500");
-	}
-};
+// GET
+const getCollection = async (ctx: Context, collection: string) =>
+	(ctx.body = data[collection] ? data[collection] : [{ msg: "empty collection: " + collection }]);
+	
+const getDocumentById = async (ctx: Context, collection: string, id: number | string) => {};
 
-export { getCollection };
+// POST
+const postDocumentInCollection = async (ctx: Context, collection: string, post: object) => {};
+
+export { getCollection, getDocumentById, postDocumentInCollection };
