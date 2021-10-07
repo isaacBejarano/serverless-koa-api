@@ -8,8 +8,13 @@
 	"scripts": {
 		"start": "ts-node-dev src/api.ts",
 		"watch": "ts-node-dev --respawn src/api.ts",
+		"persist": "ts-node-dev src/static/static.ts",
+		"persist:w": "ts-node-dev --respawn src/static/static.ts",
 		"build": "tsc",
-		"serve": "node dist/api --harmony"
+		"serve": "node dist/api --harmony",
+		"jam": "npm run persist && npm run build",
+		"ntl:build": "netlify-lambda build dist",
+		"ntl:serve": "netlify-lambda serve dist"
 	},
 	"dependencies": {
 		"@koa/router": "^10.1.1",
