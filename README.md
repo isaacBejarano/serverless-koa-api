@@ -7,29 +7,32 @@ It'll serve traditional and popular Spanish idioms.*
 
 ## Commands and Scripts
 ### Clone and setup loclal project
-git clone XXXX
-npm install
+1. `git clone https://github.com/isaacBejarano/serverless-koa-api.git`
+2. `npm install`
 
 ### Transpile API to JavaScript
-npm run jam
+`npm run jam`
 
 ### Serve API locally
-npm run serve
+`npm run serve`
 
 ### Wrap API to Netlify Lambda Function
-npm run ntl:build
+`npm run ntl:build`
 
 ### Serve Lambda locally
-npm run ntl:serve
+`npm run ntl:serve`
 
-### Workflow for Netlify CI/CD
-1. npm run jam && npm run ntl:build
-2. then stage, commit and push to production's branch, as Specified in Netlify Deployment
+### Workflow for Netlify CI/CD *(using Bash)*
+1. `npm run jam && npm run ntl:build`
+2. then stage, commit and push to production's branch, as specified in Netlify Deployment
 
-### Workflow for Netlify CI/CD (being "master" the production branch)
-1. npm run jam && npm run ntl:build
+### Workflow for Netlify CI/CD *(using Bash)*
+1. `npm run jam && npm run ntl:build`
 2. then stage, commit and push to production's branch
-3. netlify deploy --prod
+3. `netlify deploy --prod`
+
+> **NOTE**: *Don't forget to specify the "publish" directory in the **Netlify UI** or in your local **netlify.toml** file*
+
 
 ## Host - fallback view - "Captain America goes Fullstack Developer"
 https://refranero-api.netlify.app
