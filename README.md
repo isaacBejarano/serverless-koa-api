@@ -58,3 +58,6 @@ method: 'GET'
 ```
 
 > **NOTE**: *The Headers will eventually become private with restricted origin policy*
+
+## Deploy Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f5459825-8347-49fd-b191-c54ea1ea5e40/deploy-status)](https://app.netlify.com/sites/refranero-api/deploys)
